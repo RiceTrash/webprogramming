@@ -1,3 +1,18 @@
+<?php
+session_start(); // Start the session
+
+// Should request by AJAX
+if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest') {
+    // IS not requested from AJAX then reject
+    ?>
+        <h1>This is a Restricted Page</h1>
+    <?php
+    exit(); // We stop
+}
+
+
+?>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">

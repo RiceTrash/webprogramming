@@ -192,4 +192,34 @@ $(document).ready(function(){
             }
         });
     }
+
+    
+
+    function viewAccount(){
+        $.ajax({
+            type: 'GET',
+            url: '../account/view-account.php',
+            dataType: 'html',
+            success: function(response){
+                $('.content-page').html(response)
+
+                var table = $('#table-account').DataTable({
+                    dom: 'rtp',
+                    pageLength: 10,
+                    ordering: false
+                })
+
+                  // Bind custom input to DataTable search
+                  $('#custom-search').on('keyup', function() {
+                    table.search(this.value).draw()
+                });
+
+                $('#role-filter').on('change', function() {
+                    if(this.value !== 'choose'){
+                        table.column(3).search(this.value).draw()
+                    }
+                });
+            }
+        })
+    }
 });
