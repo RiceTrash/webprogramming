@@ -18,11 +18,20 @@ $(document).ready(function(){
         viewProducts()
     })
 
+    $('#account-link').on('click', function(e){
+        e.preventDefault()
+        viewAccount()
+    })
+
+
     let url = window.location.href;
+
     if (url.endsWith('dashboard')){
         $('#dashboard-link').trigger('click')
     }else if (url.endsWith('products')){
         $('#products-link').trigger('click')
+    }else if (url.endsWith('accounts')){
+        $('#account-link').trigger('click')
     }else{
         $('#dashboard-link').trigger('click')
     }
@@ -194,7 +203,6 @@ $(document).ready(function(){
     }
 
     
-
     function viewAccount(){
         $.ajax({
             type: 'GET',
